@@ -7,17 +7,27 @@
 #include "functions.h"
 using namespace cv;
 using namespace std;
+
+
 class BoundingBox;
 class Coordinates;
 void defContours(Mat frame);
 void exportExcel(Point2f mc);
+string vidname = "bal.AVI";
+VideoCapture video(vidname);
+GLFWwindow* makeVid(string myVideo);
+void myAnimate(GLFWwindow* myWin);
 Rect2d getBound();
 Point2f getCentroid();
-VideoCapture video("C:\\Users\\Titanium\\source\\repos\\Project1\\videos\\dot.mp4\n");
+//VideoCapture video(string Filename);
 // create a tracker object
 Ptr<Tracker> tracker = TrackerKCF::create();
 int main(int argc, char** argv)
 {
+
+	GLFWwindow* myWin = makeVid(vidname);
+	myAnimate(myWin);
+	/**
 	Mat frame;
 	// Exit if video is not opened
 	if (!video.isOpened())
@@ -31,12 +41,13 @@ int main(int argc, char** argv)
 	//Define Contours for first frame
 	defContours(frame);
 	//Calculate the ROI of circle from image
+	cout << "Get here too";
 	Rect2d bbox = getBound();
 	///Next two lines get the center of the circle based off the cirle which is a float. 
 	///I believe its a more accurate center. Ask Nour
 	//Point2f centroids = getCentroid();
 	//exportExcel(centroids);
-
+	cout << "Get here too";
 	rectangle(frame, bbox, Scalar(255, 0, 0), 2, 1);
 	imshow("Tracking", frame);
 	tracker->init(frame, bbox);
@@ -54,9 +65,12 @@ int main(int argc, char** argv)
 		if (ok)
 		{
 			/// Tracking success : Draw the tracked object
+			//Modify this code based on time
 			rectangle(frame, bbox, Scalar(255, 0, 0), 2, 1);
 			//Calculate contours of the sphere. 
+			//cout << "About to define contours";
 			defContours(frame);
+			//cout << "Contours defined";
 			//Calculate the center of the ROI as it is being tracked. Returns one decimal
 			Point2f center_of_rect = (bbox.br() + bbox.tl())*0.5;
 			//Calulates center of the circle. Returns a float
@@ -90,7 +104,8 @@ int main(int argc, char** argv)
 
 	}
 
-
+	
+	//*/
 	waitKey();
 	return 0;
 }

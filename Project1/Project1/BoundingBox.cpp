@@ -19,16 +19,15 @@ Mat can_output;
 //Initialize vector that will contain contour points
 vector<vector<Point> > contours;
 int threshit = 100;
-void thresh_callback(int, void*);
-
 /**
  * @function thresh_callback
  */
 void defContours(Mat myFrame)
 {
-
+	cout << "Got here III";
 	/// Convert image to gray and blur it
 	cvtColor(myFrame, sorc_gray, COLOR_BGR2GRAY);
+	cout << "Got here IV";
 	//Smooths the image using a kernel
 	blur(sorc_gray, sorc_gray, Size(3, 3));
 	//! [setup]
@@ -55,6 +54,7 @@ void defContours(Mat myFrame)
 	//Find image contours in canny_output 
 	findContours(can_output, contours, RETR_TREE, CHAIN_APPROX_SIMPLE);
 	//! [findContours]
+	cout << "Got here";
 }
 
 /**
@@ -65,6 +65,7 @@ Rect2d getBound() {
 	//! [allthework]
 	/// Approximate contours to polygons + get bounding rects and circles
 	//Get vector of contour size
+	cout << "Got here right";
 	vector<vector<Point> > contours_poly(contours.size());
 	//Initalize point of contour center
 	vector<Point2f>centers(contours.size());
@@ -72,7 +73,9 @@ Rect2d getBound() {
 	vector<float>radius(contours.size());
 	// Initialize bbox for ROI
 	vector<Rect2d> boundRect(contours.size());
+	cout << "Got here right";
 	cout << contours.size();
+	cout << "Got here right";
 	for (size_t i = 0; i < contours.size(); i++)
 	{
 		// Function approximates curve of contour
@@ -80,16 +83,17 @@ Rect2d getBound() {
 		// Finds minimum enclosing circle of contour points
 		minEnclosingCircle(contours_poly[i], centers[i], radius[i]);
 		//Define boundRect of ROI
-		Mat dst;
 		boundRect[i] = boundingRect(Mat(contours_poly[i]));
 	}
+	cout << "Got here rightfourth";
+	cout << boundRect[0];
 	//! [allthework]
 	//! [zeroMat]
 	//vector<Rect2d> addRect(3 : 3);
 	//vector<Rect2d> sumRect = addRect + boundRect[2];
 	//Export bounding box for video ROI
 	//manual addition to rectangle dimensions.
-	Rect2d bigger_rect = boundRect[2];
+	Rect2d bigger_rect = boundRect[0];
 	//Offset center of ROI by 25 pixels
 	Point2d inflationPoint(-25, -25);
 	//Inflate size by to 50 pixels width and height
@@ -100,7 +104,7 @@ Rect2d getBound() {
 	bigger_rect += inflationSize;
 	//Return Rectangle
 	return (bigger_rect);
-	
+	cout << "Got here rightfifth";
 
 	// Create Exceptions that throw errors within code.
 }
@@ -139,6 +143,6 @@ Point2f getCentroid() {
 
 	//Output centroid, x,y coordinate of the contour in relation to "drawing" matrix as an output
 	//cout << mc[2];
-	
+	cout << "Got here right";
 	return mc[2];
 }
