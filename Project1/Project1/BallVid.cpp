@@ -11,16 +11,17 @@
 #include <stdio.h>
 
 
+using namespace std;
+using namespace cv;
+
 int wid, hgt = 480;
 VideoWriter outputVideo;
 string myVid;
-void realeaseVid(); 
+void realeaseVid();
 void openVideo();
 void saveFramebuffer(int x);
 void myAnimate(GLFWwindow* myWin);
 
-using namespace std;
-using namespace cv;
 /*
 Function that creates window and sets context for window
 */
@@ -71,8 +72,8 @@ void myAnimate(GLFWwindow* myWin) {
 	openVideo();
 	while (!glfwWindowShouldClose(window)) {
 		///Setup View
-
-		for (int t = 0; t <= 1000; t++) {
+		// For each 20 t equals 1 second for the video. t = 400 equals 20 seconds
+		for (int t = 0; t <= 400; t++) {
 			float ratio;
 			int width, height;
 			//Pointers write data to width and height variables
@@ -180,4 +181,5 @@ void realeaseVid() {
 	outputVideo.release();
 	cout << "Video should be released";
 }
+
 
