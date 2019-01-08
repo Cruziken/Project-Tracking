@@ -1,13 +1,18 @@
-﻿  BallVid.cpp
+﻿  BallFunctions.cpp
+c:\users\titanium\source\repos\project1\project1\ballfunctions.cpp(36): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\titanium\source\repos\project1\project1\ballfunctions.cpp(37): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\titanium\source\repos\project1\project1\ballfunctions.cpp(83): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\titanium\source\repos\project1\project1\ballfunctions.cpp(92): warning C4305: '+=': truncation from 'double' to 'float'
+  BallVid.cpp
 c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
   c:\users\titanium\source\repos\project1\project1\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
-c:\users\titanium\source\repos\project1\project1\ballvid.cpp(61): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\titanium\source\repos\project1\project1\ballvid.cpp(62): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\titanium\source\repos\project1\project1\ballvid.cpp(64): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\titanium\source\repos\project1\project1\ballvid.cpp(65): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\titanium\source\repos\project1\project1\ballvid.cpp(91): warning C4305: '-=': truncation from 'double' to 'float'
-c:\users\titanium\source\repos\project1\project1\ballvid.cpp(99): warning C4305: '+=': truncation from 'double' to 'float'
-c:\users\titanium\source\repos\project1\project1\ballvid.cpp(108): warning C4305: '-=': truncation from 'double' to 'float'
-c:\users\titanium\source\repos\project1\project1\ballvid.cpp(116): warning C4305: '+=': truncation from 'double' to 'float'
-c:\users\titanium\source\repos\project1\project1\ballvid.cpp(149): warning C4551: function call missing argument list
+c:\users\titanium\source\repos\project1\project1\ballvid.cpp(74): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\titanium\source\repos\project1\project1\ballvid.cpp(75): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\titanium\source\repos\project1\project1\ballvid.cpp(77): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\titanium\source\repos\project1\project1\ballvid.cpp(78): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\titanium\source\repos\project1\project1\ballvid.cpp(94): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\titanium\source\repos\project1\project1\ballvid.cpp(96): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\titanium\source\repos\project1\project1\ballvid.cpp(123): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\titanium\source\repos\project1\project1\ballvid.cpp(165): warning C4551: function call missing argument list
+  Generating Code...
   Project1.vcxproj -> C:\Users\Titanium\source\repos\Project1\x64\Debug\CannyStill1.exe

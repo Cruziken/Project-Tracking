@@ -5,6 +5,7 @@
 #include <opencv2/videoio.hpp>
 #include "opencv2/imgproc.hpp"
 #include "functions.h"
+
 using namespace cv;
 using namespace std;
 
@@ -12,24 +13,27 @@ using namespace std;
 class BoundingBox;
 class Coordinates;
 void defContours(Mat frame);
-void exportExcel(Point2f mc);
-string vidname = "bal.AVI";
+void exportExcel(Point2f mc, float time);
+string vidname = "bentest.avi";
 VideoCapture video(vidname);
 GLFWwindow* makeVid(string myVideo);
 void myAnimate(GLFWwindow* myWin);
+//void makeCoords(Point2f mc);
 Rect2d getBound();
 Point2f getCentroid();
 //VideoCapture video(string Filename);
 // create a tracker object
 Ptr<Tracker> tracker = TrackerKCF::create();
+
 int main(int argc, char** argv)
 {
 
-	GLFWwindow* myWin = makeVid(vidname);
+    GLFWwindow* myWin = makeVid(vidname);
 	myAnimate(myWin);
 	/**
-	Mat frame;
+    Mat frame;
 	// Exit if video is not opened
+
 	if (!video.isOpened())
 	{
 		cout << "Could not read video file" << endl;
@@ -41,22 +45,21 @@ int main(int argc, char** argv)
 	//Define Contours for first frame
 	defContours(frame);
 	//Calculate the ROI of circle from image
-	cout << "Get here too";
 	Rect2d bbox = getBound();
 	///Next two lines get the center of the circle based off the cirle which is a float. 
 	///I believe its a more accurate center. Ask Nour
 	//Point2f centroids = getCentroid();
 	//exportExcel(centroids);
-	cout << "Get here too";
 	rectangle(frame, bbox, Scalar(255, 0, 0), 2, 1);
 	imshow("Tracking", frame);
 	tracker->init(frame, bbox);
-
+	float frame_number = 0;
 	while (video.read(frame))
-	{
+	{	
+		
 		// Start timer
 		double timer = (double)getTickCount();
-
+		float tofvid = frame_number / 20;
 		// Update the tracking result
 		bool ok = tracker->update(frame, bbox);
 		// Calculate Frames per second (FPS)
@@ -75,9 +78,10 @@ int main(int argc, char** argv)
 			Point2f center_of_rect = (bbox.br() + bbox.tl())*0.5;
 			//Calulates center of the circle. Returns a float
 			//Point2f centroids = getCentroid();
-			cout << center_of_rect;
+			//cout << center_of_rect;
 			//Exports (x,y) coordinate of rectangle center
-			exportExcel(center_of_rect);
+			//makeCoords(center_of_rect);
+			exportExcel(center_of_rect, tofvid);
 
 		}
 		else
@@ -101,6 +105,10 @@ int main(int argc, char** argv)
 		{
 			break;
 		}
+		frame_number ++;
+
+		//cout << (frame_number / 20);
+		//cout << " , ";
 
 	}
 

@@ -24,10 +24,9 @@ int threshit = 100;
  */
 void defContours(Mat myFrame)
 {
-	cout << "Got here III";
-	/// Convert image to gray and blur it
+		/// Convert image to gray and blur it
 	cvtColor(myFrame, sorc_gray, COLOR_BGR2GRAY);
-	cout << "Got here IV";
+
 	//Smooths the image using a kernel
 	blur(sorc_gray, sorc_gray, Size(3, 3));
 	//! [setup]
@@ -54,8 +53,7 @@ void defContours(Mat myFrame)
 	//Find image contours in canny_output 
 	findContours(can_output, contours, RETR_TREE, CHAIN_APPROX_SIMPLE);
 	//! [findContours]
-	cout << "Got here";
-}
+	}
 
 /**
  * @function getBound()
@@ -65,7 +63,7 @@ Rect2d getBound() {
 	//! [allthework]
 	/// Approximate contours to polygons + get bounding rects and circles
 	//Get vector of contour size
-	cout << "Got here right";
+	//cout << "Got here right";
 	vector<vector<Point> > contours_poly(contours.size());
 	//Initalize point of contour center
 	vector<Point2f>centers(contours.size());
@@ -73,9 +71,9 @@ Rect2d getBound() {
 	vector<float>radius(contours.size());
 	// Initialize bbox for ROI
 	vector<Rect2d> boundRect(contours.size());
-	cout << "Got here right";
+	//cout << "Got here right";
 	cout << contours.size();
-	cout << "Got here right";
+	//cout << "Got here right";
 	for (size_t i = 0; i < contours.size(); i++)
 	{
 		// Function approximates curve of contour
@@ -85,7 +83,6 @@ Rect2d getBound() {
 		//Define boundRect of ROI
 		boundRect[i] = boundingRect(Mat(contours_poly[i]));
 	}
-	cout << "Got here rightfourth";
 	cout << boundRect[0];
 	//! [allthework]
 	//! [zeroMat]
@@ -104,7 +101,7 @@ Rect2d getBound() {
 	bigger_rect += inflationSize;
 	//Return Rectangle
 	return (bigger_rect);
-	cout << "Got here rightfifth";
+	
 
 	// Create Exceptions that throw errors within code.
 }

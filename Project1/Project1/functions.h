@@ -10,7 +10,8 @@ using namespace cv;
 using namespace std;
 
 void defContours(Mat myFrame);
-void exportExcel(Point2f mc);
+void exportExcel(Point2f mc, float time);
+//void makeCoords(Point2f mc);
 Rect2d getBound();
 Point2f getCentroid();
 GLFWwindow* makeVid(string myVideo);
